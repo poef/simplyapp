@@ -9,6 +9,12 @@ const demo = simply.app({
 
 		}
 	},
+	keys: {
+		'Control-Alt-h': function() {
+			this.actions.help()
+			return false
+		}
+	},
 	commands: {
 		demo: async function(el, value) {
 			await this.actions.demo()
@@ -18,6 +24,9 @@ const demo = simply.app({
 		demo: async function() {
 			const result = await this.api.demo()
 			this.state.demo = result.demo
+		},
+		help: async function() {
+			this.state.demo = html`This is a skeleton app for the SimplyView/SimplyFlow/metro ecosystem`
 		}
 	},
 	state: simply.state.signal({
